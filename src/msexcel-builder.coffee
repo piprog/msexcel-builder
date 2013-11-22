@@ -61,7 +61,7 @@ class DocPropsApp
     props.ele('DocSecurity','0')
     props.ele('ScaleCrop','false')
     tmp = props.ele('HeadingPairs').ele('vt:vector',{size:2,baseType:'variant'})
-    tmp.ele('vt:variant').ele('vt:lpstr','工作表')
+    tmp.ele('vt:variant').ele('vt:lpstr','Worksheets')
     tmp.ele('vt:variant').ele('vt:i4',''+@book.sheets.length)
     tmp = props.ele('TitlesOfParts').ele('vt:vector',{size:@book.sheets.length,baseType:'lpstr'})
     for i in [1..@book.sheets.length]
