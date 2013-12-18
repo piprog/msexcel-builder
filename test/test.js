@@ -1,7 +1,7 @@
 var should = require('should')
 describe('msexcel-builder', function() {
   it('should create a spreadsheet', function(done) {
-    var excel = require('../lib')
+    var excel = require('../lib/msexcel-builder')
     var filename = 'test.xlsx'
     var wb = excel.createWorkbook(__dirname, filename)
     var sheet = wb.createSheet('Test', 6, 21)
