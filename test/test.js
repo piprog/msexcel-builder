@@ -1,7 +1,7 @@
 var should = require('should')
+var excel = require('../lib/msexcel-builder')
 describe('msexcel-builder', function() {
   it('should create a spreadsheet', function(done) {
-    var excel = require('../lib/msexcel-builder')
     var filename = 'test.xlsx'
     var wb = excel.createWorkbook(__dirname, filename)
     var sheet = wb.createSheet('Test', 6, 21)
@@ -21,6 +21,27 @@ describe('msexcel-builder', function() {
     wb.save(function(err) {
       should.ifError(err)
       done()
+    })
+  })
+
+  describe('i2a', function() {
+    var tests = [
+      {input: 25, output: 'Y'},
+      {input: 26, output: 'Z'},
+      {input: 27, output: 'AA'},
+      {input: 52, output: 'AZ'},
+      {input: 53, output: 'BA'},
+      {input: 78, output: 'BZ'},
+      {input: 79, output: 'CA'},
+      {input: 702, output: 'ZZ'},
+      {input: 703, output: 'AAA'}
+    ]
+    tests.forEach(function(t) {
+      describe('i2a('+t.input+')', function() {
+        it('should equal "'+t.output+'"', function() {
+          excel.i2a(t.input).should.eql(t.output)
+        })
+      })
     })
   })
 })
